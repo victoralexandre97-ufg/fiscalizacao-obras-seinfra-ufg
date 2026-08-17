@@ -1,22 +1,14 @@
 {
-<<<<<<< HEAD
   "atualizado_em": "2026-08-17T12:34:46-0300",
-=======
-  "atualizado_em": "2026-08-17T15:25:34+0000",
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
   "total_obras": 15,
   "obras": [
     {
       "id": "3650dd4d-b056-805c-b341-e89577f5a119",
       "obra": "REFORMA DO MINI- AUDITÓRIO DA FACULDADE DE MEDICINA/ UFG",
-<<<<<<< HEAD
       "fiscais": [
         "Elétrica/Thyago Gumeratto",
         "Civil/Gabriella Coelho"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -28,16 +20,12 @@
     {
       "id": "3280dd4d-b056-8096-b5fb-ea81a8eece5b",
       "obra": "FACE - Reforma",
-<<<<<<< HEAD
       "fiscais": [
         "Civil/Marcelus Isaac",
         "Elétrica/Caio Povoa",
         "Mecânica/Pedro Henrique",
         "Sistemas/Junior Martins"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "UFG",
       "status": "Não iniciada",
       "valor_total": 2723519.34,
@@ -49,7 +37,6 @@
     {
       "id": "3280dd4d-b056-8079-9840-ed494f3b5fa1",
       "obra": "Instituto de Inovação em Gestão - Cidade Ocidental",
-<<<<<<< HEAD
       "fiscais": [
         "Civil/Carlos Texeira",
         "Sistemas/Junior Martins",
@@ -57,9 +44,6 @@
         "Mecânica/Pedro Henrique",
         "Administrativo/Natalia Lopes"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "UFG",
       "status": "Não iniciada",
       "valor_total": 36598981.8,
@@ -71,16 +55,12 @@
     {
       "id": "3280dd4d-b056-804d-ac6b-ddb05793028a",
       "obra": "CEROF Etapa 1",
-<<<<<<< HEAD
       "fiscais": [
         "Civil/Cecílio Rocha",
         "Sistemas/Junior Martins",
         "Mecânica/Pedro Henrique",
         "Elétrica/Carlos Leandro"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -92,7 +72,6 @@
     {
       "id": "3280dd4d-b056-8044-8e22-e8833e27a2bf",
       "obra": "CA - UFG Cidade de Goias",
-<<<<<<< HEAD
       "fiscais": [
         "Civil/Marcelus Isaac",
         "Sistemas/Junior Martins",
@@ -100,9 +79,6 @@
         "Mecânica/Murilo Candido",
         "Arquitetura/Adriano Reis"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 6687000.0,
@@ -114,16 +90,12 @@
     {
       "id": "3280dd4d-b056-8023-8dfe-ffcd6a4d0ad0",
       "obra": "Pós Graduação",
-<<<<<<< HEAD
       "fiscais": [
         "Civil/Joaquim Augusto",
         "Elétrica/Manfred Schaitl",
         "Sistemas/Junior Martins",
         "Mecânica/Pedro Henrique"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -135,16 +107,12 @@
     {
       "id": "3280dd4d-b056-80b5-8576-edc1a5326807",
       "obra": "CIETT (Colabora +) Etapa 1",
-<<<<<<< HEAD
       "fiscais": [
         "Mecânica/Pedro Henrique",
         "Sistemas/Junior Martins",
         "Civil/Joaquim Augusto",
         "Elétrica/Caio Povoa"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -168,16 +136,12 @@
     {
       "id": "3280dd4d-b056-8098-b24a-d2d6fa21ca85",
       "obra": "Aldeia - UFG Samambaia",
-<<<<<<< HEAD
       "fiscais": [
         "Elétrica/Caio Povoa",
         "Sistemas/Junior Martins",
         "Mecânica/Pedro Henrique",
         "Civil/Marcelus Isaac"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 17898905.56,
@@ -201,16 +165,12 @@
     {
       "id": "3270dd4d-b056-8060-84e6-f205c24b2b69",
       "obra": "CEIA",
-<<<<<<< HEAD
       "fiscais": [
         "Sistemas/Junior Martins",
         "Civil/Joaquim Augusto",
         "Elétrica/Caio Povoa",
         "Orçamentista/Paulo Cotrim"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "FUNAPE",
       "status": "Em andamento",
       "valor_total": 0.0,
@@ -222,7 +182,6 @@
     {
       "id": "3270dd4d-b056-809b-bd64-d94b387ba91c",
       "obra": "Pequenas Reformas",
-<<<<<<< HEAD
       "fiscais": [
         "Elétrica/Thyago Gumeratto",
         "Sistemas/Junior Martins",
@@ -231,9 +190,6 @@
         "Elétrica/Manfred Schaitl",
         "Elétrica/Orlando Lopes"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Em andamento",
       "valor_total": 0.0,
@@ -245,7 +201,6 @@
     {
       "id": "2fe0dd4d-b056-80ff-ab34-f2511f418ed8",
       "obra": "RU - UFG Aparecida de Goiânia",
-<<<<<<< HEAD
       "fiscais": [
         "Sistemas/Junior Martins",
         "Elétrica/Thyago Gumeratto",
@@ -253,9 +208,6 @@
         "Administrativo/Suzana Patrício",
         "Mecânica/Murilo Candido"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 7500000.0,
@@ -267,16 +219,12 @@
     {
       "id": "2fe0dd4d-b056-803c-803f-dede89089c4f",
       "obra": "Média Tensão Caldas Novas",
-<<<<<<< HEAD
       "fiscais": [
         "Elétrica/Carlos Leandro",
         "Elétrica/Thyago Gumeratto",
         "Sistemas/Junior Martins",
         "Administrativo/Suzana Patrício"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Concluído",
       "valor_total": 0.0,
@@ -288,15 +236,11 @@
     {
       "id": "2fc0dd4d-b056-803f-87d0-dbca9dbbcda9",
       "obra": "Casa dos Estudantes Universitários V (CEU V)",
-<<<<<<< HEAD
       "fiscais": [
         "Elétrica/Carlos Leandro",
         "Civil/Joaquim Augusto",
         "Administrativo/Natalia Lopes"
       ],
-=======
-      "fiscais": [],
->>>>>>> 948b092a089d0970201888278693cb07ba96ce13
       "recurso": "",
       "status": "Em andamento",
       "valor_total": 0.0,
