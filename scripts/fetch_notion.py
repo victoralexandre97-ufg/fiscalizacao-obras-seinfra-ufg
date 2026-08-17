@@ -33,15 +33,15 @@ OUTPUT_PATH = Path(__file__).resolve().parent.parent / "dados.json"
 # Nomes das propriedades esperadas na base do Notion.
 # Ajuste aqui caso os nomes das colunas na sua base sejam diferentes.
 PROP_NAMES = {
-    "obra": ["Obra", "Nome", "Name"],
+    "obra": ["Obra", "Portaria", "Nome", "Name"],
     "fiscais": ["Fiscais", "Fiscal", "Responsáveis", "Responsavel"],
     "recurso": ["Recurso", "Tipo de Recurso", "Categoria"],
     "status": ["Status", "Situação"],
-    "valor_total": ["Valor Total", "Valor", "Valor (R$)"],
+    "valor_total": ["Valor do Contrato", "Valor Total", "Valor", "Valor (R$)"],
     "latitude": ["Latitude", "Lat"],
     "longitude": ["Longitude", "Long", "Lng"],
-    "data_inicio": ["Data Início", "Data Inicio", "Início"],
-    "previsao_termino": ["Previsão Término", "Previsao Termino", "Término Previsto", "Previsão de Término"],
+    "data_inicio": ["Início Obra", "Data Início", "Data Inicio", "Início"],
+    "previsao_termino": ["Prazo Obra", "Previsão Término", "Previsao Termino", "Término Previsto", "Previsão de Término"],
 }
 
 
@@ -106,6 +106,9 @@ def find_property(properties: Dict[str, Any], candidates: List[str]) -> Optional
 def extract_title(prop: Optional[Dict[str, Any]]) -> str:
     if not prop:
         return ""
+    prop_type = prop.get("type")
+    if prop_type == "rich_text":
+        return extract_rich_text(prop)
     items = prop.get("title", [])
     return "".join(item.get("plain_text", "") for item in items).strip()
 
