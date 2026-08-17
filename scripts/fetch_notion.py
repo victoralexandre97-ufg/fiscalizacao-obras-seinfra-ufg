@@ -157,7 +157,44 @@ def extract_people(prop: Optional[Dict[str, Any]]) -> List[str]:
     return names
 
 
-def extract_rollup(prop: Optional[Dict[str, Any]]) -> List[str]:
+PAGE_TITLE_CACHE: Dict[str, str] = {}
+
+
+def get_page_title(page_id: str, headers: Dict[str, str]) -> str:
+    if page_id in PAGE_TITLE_CACHE:
+        return PAGE_TITLE_CACHE[page_id]
+    try:
+        url = f"{NOTION_API_URL}/pages/{page_id}"
+        resp = requests.get(url, headers=headers, timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            props = data.get("properties", {})
+            for prop_name, prop_val in props.items():
+                if prop_val.get("type") == "title":
+                    title_text = extract_title(prop_val)
+                    if title_text:
+                        PAGE_TITLE_CACHE[page_id] = title_text
+                        return title_text
+    except Exception as e:
+        print(f"[AVISO] Erro ao buscar página relacionada {page_id}: {e}")
+    return ""
+
+
+def extract_relation(prop: Optional[Dict[str, Any]], headers: Dict[str, str]) -> List[str]:
+    if not prop:
+        return []
+    relation_items = prop.get("relation", [])
+    names = []
+    for rel in relation_items:
+        page_id = rel.get("id")
+        if page_id:
+            title = get_page_title(page_id, headers)
+            if title:
+                names.append(title)
+    return names
+
+
+def extract_rollup(prop: Optional[Dict[str, Any]], headers: Dict[str, str]) -> List[str]:
     if not prop:
         return []
     rollup = prop.get("rollup", {})
@@ -166,13 +203,13 @@ def extract_rollup(prop: Optional[Dict[str, Any]]) -> List[str]:
         array = rollup.get("array", [])
         results = []
         for item in array:
-            results.extend(extract_fiscais(item))
+            results.extend(extract_fiscais(item, headers))
         return results
     return []
 
 
-def extract_fiscais(prop: Optional[Dict[str, Any]]) -> List[str]:
-    """Aceita 'fiscais' cadastrados como people, multi_select, select, rollup ou texto separado por vírgula."""
+def extract_fiscais(prop: Optional[Dict[str, Any]], headers: Dict[str, str]) -> List[str]:
+    """Aceita 'fiscais' cadastrados como people, multi_select, select, relation, rollup ou texto separado por vírgula."""
     if not prop:
         return []
     prop_type = prop.get("type")
@@ -183,8 +220,10 @@ def extract_fiscais(prop: Optional[Dict[str, Any]]) -> List[str]:
     if prop_type == "select":
         val = extract_select(prop)
         return [val] if val else []
+    if prop_type == "relation":
+        return extract_relation(prop, headers)
     if prop_type == "rollup":
-        return extract_rollup(prop)
+        return extract_rollup(prop, headers)
     if prop_type in ("rich_text", "title"):
         raw = extract_rich_text(prop) if prop_type == "rich_text" else extract_title(prop)
         parts = [p.strip() for p in raw.replace(";", ",").replace("/", ",").split(",") if p.strip()]
@@ -196,7 +235,24 @@ def extract_number(prop: Optional[Dict[str, Any]]) -> float:
     if not prop:
         return 0.0
     value = prop.get("number")
-    return float(value) if value is not None else 0.0
+    if value is not None:
+        return float(value)
+    prop_type = prop.get("type")
+    if prop_type in ("rich_text", "title"):
+        raw = extract_rich_text(prop) if prop_type == "rich_text" else extract_title(prop)
+        if not raw:
+            return 0.0
+        # Normaliza string numérica (ex: "R$ 1.234,56" ou "-16.6047")
+        clean = raw.replace("R$", "").strip()
+        if "," in clean and "." in clean:
+            clean = clean.replace(".", "").replace(",", ".")
+        elif "," in clean:
+            clean = clean.replace(",", ".")
+        try:
+            return float(clean)
+        except ValueError:
+            pass
+    return 0.0
 
 
 def extract_date(prop: Optional[Dict[str, Any]], which: str = "start") -> Optional[str]:
@@ -208,7 +264,7 @@ def extract_date(prop: Optional[Dict[str, Any]], which: str = "start") -> Option
     return date_obj.get(which)
 
 
-def normalize_page(page: Dict[str, Any]) -> Dict[str, Any]:
+def normalize_page(page: Dict[str, Any], headers: Dict[str, str]) -> Dict[str, Any]:
     props = page.get("properties", {})
 
     obra_prop = find_property(props, PROP_NAMES["obra"])
@@ -224,7 +280,7 @@ def normalize_page(page: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "id": page.get("id"),
         "obra": extract_title(obra_prop),
-        "fiscais": extract_fiscais(fiscais_prop),
+        "fiscais": extract_fiscais(fiscais_prop, headers),
         "recurso": extract_select(recurso_prop),
         "status": extract_status(status_prop),
         "valor_total": extract_number(valor_prop),
@@ -242,7 +298,7 @@ def main() -> None:
     headers = notion_headers(token)
     raw_pages = query_all_pages(database_id, headers)
 
-    obras = [normalize_page(page) for page in raw_pages]
+    obras = [normalize_page(page, headers) for page in raw_pages]
 
     # Remove registros sem nome de obra (ex.: linhas em branco no Notion).
     obras = [obra for obra in obras if obra["obra"]]
