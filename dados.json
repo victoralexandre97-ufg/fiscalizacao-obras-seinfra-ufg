@@ -1,13 +1,11 @@
 {
-  "atualizado_em": "2026-08-17T15:14:12+0000",
+  "atualizado_em": "2026-08-17T15:25:34+0000",
   "total_obras": 15,
   "obras": [
     {
       "id": "3650dd4d-b056-805c-b341-e89577f5a119",
       "obra": "REFORMA DO MINI- AUDITÓRIO DA FACULDADE DE MEDICINA/ UFG",
-      "fiscais": [
-        "Carlos Andrade"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -19,9 +17,7 @@
     {
       "id": "3280dd4d-b056-8096-b5fb-ea81a8eece5b",
       "obra": "FACE - Reforma",
-      "fiscais": [
-        "Marina Costa"
-      ],
+      "fiscais": [],
       "recurso": "UFG",
       "status": "Não iniciada",
       "valor_total": 2723519.34,
@@ -33,9 +29,7 @@
     {
       "id": "3280dd4d-b056-8079-9840-ed494f3b5fa1",
       "obra": "Instituto de Inovação em Gestão - Cidade Ocidental",
-      "fiscais": [
-        "Paulo Ribeiro"
-      ],
+      "fiscais": [],
       "recurso": "UFG",
       "status": "Não iniciada",
       "valor_total": 36598981.8,
@@ -47,9 +41,7 @@
     {
       "id": "3280dd4d-b056-804d-ac6b-ddb05793028a",
       "obra": "CEROF Etapa 1",
-      "fiscais": [
-        "Fernanda Lima"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -61,10 +53,7 @@
     {
       "id": "3280dd4d-b056-8044-8e22-e8833e27a2bf",
       "obra": "CA - UFG Cidade de Goias",
-      "fiscais": [
-        "Carlos Andrade",
-        "Marina Costa"
-      ],
+      "fiscais": [],
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 6687000.0,
@@ -76,9 +65,7 @@
     {
       "id": "3280dd4d-b056-8023-8dfe-ffcd6a4d0ad0",
       "obra": "Pós Graduação",
-      "fiscais": [
-        "Paulo Ribeiro"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -90,9 +77,7 @@
     {
       "id": "3280dd4d-b056-80b5-8576-edc1a5326807",
       "obra": "CIETT (Colabora +) Etapa 1",
-      "fiscais": [
-        "Fernanda Lima"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -104,9 +89,7 @@
     {
       "id": "3280dd4d-b056-80df-bf82-e3490bf85a34",
       "obra": "Cerise",
-      "fiscais": [
-        "Carlos Andrade"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -118,10 +101,7 @@
     {
       "id": "3280dd4d-b056-8098-b24a-d2d6fa21ca85",
       "obra": "Aldeia - UFG Samambaia",
-      "fiscais": [
-        "Marina Costa",
-        "Paulo Ribeiro"
-      ],
+      "fiscais": [],
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 17898905.56,
@@ -133,9 +113,7 @@
     {
       "id": "3280dd4d-b056-8039-b18d-cf77300e8e18",
       "obra": "Almoxarife do IQ",
-      "fiscais": [
-        "Fernanda Lima"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Não iniciada",
       "valor_total": 0.0,
@@ -147,9 +125,7 @@
     {
       "id": "3270dd4d-b056-8060-84e6-f205c24b2b69",
       "obra": "CEIA",
-      "fiscais": [
-        "Carlos Andrade"
-      ],
+      "fiscais": [],
       "recurso": "FUNAPE",
       "status": "Em andamento",
       "valor_total": 0.0,
@@ -161,9 +137,7 @@
     {
       "id": "3270dd4d-b056-809b-bd64-d94b387ba91c",
       "obra": "Pequenas Reformas",
-      "fiscais": [
-        "Marina Costa"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Em andamento",
       "valor_total": 0.0,
@@ -175,10 +149,7 @@
     {
       "id": "2fe0dd4d-b056-80ff-ab34-f2511f418ed8",
       "obra": "RU - UFG Aparecida de Goiânia",
-      "fiscais": [
-        "Paulo Ribeiro",
-        "Fernanda Lima"
-      ],
+      "fiscais": [],
       "recurso": "UFG",
       "status": "Em andamento",
       "valor_total": 7500000.0,
@@ -190,9 +161,7 @@
     {
       "id": "2fe0dd4d-b056-803c-803f-dede89089c4f",
       "obra": "Média Tensão Caldas Novas",
-      "fiscais": [
-        "Carlos Andrade"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Concluído",
       "valor_total": 0.0,
@@ -204,9 +173,7 @@
     {
       "id": "2fc0dd4d-b056-803f-87d0-dbca9dbbcda9",
       "obra": "Casa dos Estudantes Universitários V (CEU V)",
-      "fiscais": [
-        "Marina Costa"
-      ],
+      "fiscais": [],
       "recurso": "",
       "status": "Em andamento",
       "valor_total": 0.0,
