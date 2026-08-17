@@ -34,8 +34,8 @@ OUTPUT_PATH = Path(__file__).resolve().parent.parent / "dados.json"
 # Ajuste aqui caso os nomes das colunas na sua base sejam diferentes.
 PROP_NAMES = {
     "obra": ["Obra", "Portaria", "Nome", "Name"],
-    "fiscais": ["Fiscais", "Fiscal", "Responsáveis", "Responsavel"],
-    "recurso": ["Recurso", "Tipo de Recurso", "Categoria"],
+    "fiscais": ["Fiscais", "Fiscal", "Responsáveis", "Responsavel", "Responsável", "Fiscal de Obra", "Fiscais de Obra", "Engenheiro Fiscal", "Engenheiro Responsável"],
+    "recurso": ["Recurso", "Tipo de Recurso", "Categoria", "Fonte de Recurso"],
     "status": ["Status", "Situação"],
     "valor_total": ["Valor do Contrato", "Valor Total", "Valor", "Valor (R$)"],
     "latitude": ["Latitude", "Lat"],
@@ -157,8 +157,22 @@ def extract_people(prop: Optional[Dict[str, Any]]) -> List[str]:
     return names
 
 
+def extract_rollup(prop: Optional[Dict[str, Any]]) -> List[str]:
+    if not prop:
+        return []
+    rollup = prop.get("rollup", {})
+    rollup_type = rollup.get("type")
+    if rollup_type == "array":
+        array = rollup.get("array", [])
+        results = []
+        for item in array:
+            results.extend(extract_fiscais(item))
+        return results
+    return []
+
+
 def extract_fiscais(prop: Optional[Dict[str, Any]]) -> List[str]:
-    """Aceita 'fiscais' cadastrados como people, multi_select ou texto separado por vírgula."""
+    """Aceita 'fiscais' cadastrados como people, multi_select, select, rollup ou texto separado por vírgula."""
     if not prop:
         return []
     prop_type = prop.get("type")
@@ -166,9 +180,15 @@ def extract_fiscais(prop: Optional[Dict[str, Any]]) -> List[str]:
         return extract_people(prop)
     if prop_type == "multi_select":
         return extract_multi_select(prop)
+    if prop_type == "select":
+        val = extract_select(prop)
+        return [val] if val else []
+    if prop_type == "rollup":
+        return extract_rollup(prop)
     if prop_type in ("rich_text", "title"):
         raw = extract_rich_text(prop) if prop_type == "rich_text" else extract_title(prop)
-        return [name.strip() for name in raw.split(",") if name.strip()]
+        parts = [p.strip() for p in raw.replace(";", ",").replace("/", ",").split(",") if p.strip()]
+        return parts
     return []
 
 
