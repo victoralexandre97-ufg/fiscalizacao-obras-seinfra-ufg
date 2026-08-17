@@ -1,0 +1,126 @@
+{
+  "atualizado_em": "2026-08-12T08:00:00",
+  "total_obras": 10,
+  "obras": [
+    {
+      "id": "mock-001",
+      "obra": "Reforma do Bloco A - Faculdade de Odontologia",
+      "fiscais": ["Carlos Andrade"],
+      "recurso": "Próprio UFG",
+      "status": "Em Andamento",
+      "valor_total": 1850000.00,
+      "latitude": -16.6033,
+      "longitude": -49.2642,
+      "data_inicio": "2026-02-10",
+      "previsao_termino": "2026-11-30"
+    },
+    {
+      "id": "mock-002",
+      "obra": "Construção do Novo RU - Campus Samambaia",
+      "fiscais": ["Marina Costa", "Paulo Ribeiro"],
+      "recurso": "Terceirizado/PAC",
+      "status": "Em Andamento",
+      "valor_total": 4200000.00,
+      "latitude": -16.6047,
+      "longitude": -49.2718,
+      "data_inicio": "2025-09-01",
+      "previsao_termino": "2026-12-20"
+    },
+    {
+      "id": "mock-003",
+      "obra": "Cobertura da Quadra Poliesportiva - CEPAE",
+      "fiscais": ["Carlos Andrade"],
+      "recurso": "Próprio UFG",
+      "status": "Concluída",
+      "valor_total": 620000.00,
+      "latitude": -16.6068,
+      "longitude": -49.2586,
+      "data_inicio": "2025-05-15",
+      "previsao_termino": "2025-10-01"
+    },
+    {
+      "id": "mock-004",
+      "obra": "Requalificação da Rede Elétrica - Setor Central",
+      "fiscais": ["Marina Costa"],
+      "recurso": "Terceirizado/PAC",
+      "status": "Atrasada",
+      "valor_total": 980000.00,
+      "latitude": -16.6011,
+      "longitude": -49.2650,
+      "data_inicio": "2025-11-01",
+      "previsao_termino": "2026-06-01"
+    },
+    {
+      "id": "mock-005",
+      "obra": "Ampliação do Biotério Central",
+      "fiscais": ["Paulo Ribeiro"],
+      "recurso": "Próprio UFG",
+      "status": "Paralisada",
+      "valor_total": 1320000.00,
+      "latitude": -16.6055,
+      "longitude": -49.2699,
+      "data_inicio": "2025-03-20",
+      "previsao_termino": "2026-03-20"
+    },
+    {
+      "id": "mock-006",
+      "obra": "Nova Biblioteca Setorial - Faculdade de Direito",
+      "fiscais": ["Fernanda Lima"],
+      "recurso": "Terceirizado/PAC",
+      "status": "Em Andamento",
+      "valor_total": 2750000.00,
+      "latitude": -16.6079,
+      "longitude": -49.2620,
+      "data_inicio": "2026-01-05",
+      "previsao_termino": "2027-01-05"
+    },
+    {
+      "id": "mock-007",
+      "obra": "Manutenção de Coberturas - Regional Jataí",
+      "fiscais": ["Fernanda Lima", "Carlos Andrade"],
+      "recurso": "Próprio UFG",
+      "status": "Concluída",
+      "valor_total": 410000.00,
+      "latitude": -17.8817,
+      "longitude": -51.7139,
+      "data_inicio": "2025-06-01",
+      "previsao_termino": "2025-09-15"
+    },
+    {
+      "id": "mock-008",
+      "obra": "Acessibilidade e Rampas - Campus Colemar Natal",
+      "fiscais": ["Marina Costa"],
+      "recurso": "Próprio UFG",
+      "status": "Em Andamento",
+      "valor_total": 560000.00,
+      "latitude": -16.6742,
+      "longitude": -49.2545,
+      "data_inicio": "2026-03-01",
+      "previsao_termino": "2026-09-30"
+    },
+    {
+      "id": "mock-009",
+      "obra": "Reforma dos Laboratórios de Química",
+      "fiscais": ["Paulo Ribeiro", "Fernanda Lima"],
+      "recurso": "Terceirizado/PAC",
+      "status": "Atrasada",
+      "valor_total": 1970000.00,
+      "latitude": -16.6029,
+      "longitude": -49.2663,
+      "data_inicio": "2025-08-10",
+      "previsao_termino": "2026-05-10"
+    },
+    {
+      "id": "mock-010",
+      "obra": "Modernização do Sistema de Combate a Incêndio",
+      "fiscais": ["Carlos Andrade"],
+      "recurso": "Próprio UFG",
+      "status": "Em Andamento",
+      "valor_total": 890000.00,
+      "latitude": -16.6041,
+      "longitude": -49.2609,
+      "data_inicio": "2026-04-15",
+      "previsao_termino": "2026-10-15"
+    }
+  ]
+}

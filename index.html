@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEINFRA UFG · Painel de Obras</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<div class="app">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header">
+    <div class="header__brand">
+      <span class="header__mark">SEINFRA</span>
+      <div class="header__title">
+        <h1>Painel de Obras</h1>
+        <span class="header__subtitle">Universidade Federal de Goiás</span>
+      </div>
+    </div>
+
+    <div class="header__filters">
+      <div class="field">
+        <label for="f-obra">Obra</label>
+        <select id="f-obra"><option value="">Todas</option></select>
+      </div>
+      <div class="field">
+        <label for="f-fiscal">Fiscal</label>
+        <select id="f-fiscal"><option value="">Todos</option></select>
+      </div>
+      <div class="field">
+        <label for="f-status">Status</label>
+        <select id="f-status"><option value="">Todos</option></select>
+      </div>
+      <div class="field">
+        <label for="f-recurso">Recurso</label>
+        <select id="f-recurso"><option value="">Todos</option></select>
+      </div>
+      <button id="btn-reset" class="btn-reset" title="Limpar filtros">Limpar</button>
+    </div>
+
+    <div class="header__status">
+      <div class="sync-badge" id="sync-badge">
+        <span class="sync-dot"></span>
+        SINC. NOTION ATIVO
+      </div>
+      <div class="clock" id="clock">
+        <span id="clock-time">00:00:00</span>
+        <span id="clock-date">--/--/----</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== KPIs ===================== -->
+  <section class="kpis">
+    <div class="kpi-card">
+      <span class="kpi-card__label">Valor total do portfólio</span>
+      <span class="kpi-card__value" id="kpi-valor">R$ 0</span>
+      <span class="kpi-card__spark kpi-card__spark--cyan"></span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-card__label">Total de obras</span>
+      <span class="kpi-card__value" id="kpi-total">0</span>
+      <span class="kpi-card__spark kpi-card__spark--amber"></span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-card__label">Custo médio por obra</span>
+      <span class="kpi-card__value" id="kpi-media">R$ 0</span>
+      <span class="kpi-card__spark kpi-card__spark--violet"></span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-card__label">Obras no prazo</span>
+      <span class="kpi-card__value" id="kpi-prazo">0%</span>
+      <span class="kpi-card__spark kpi-card__spark--green"></span>
+    </div>
+  </section>
+
+  <!-- ===================== MAIN GRID ===================== -->
+  <main class="main-grid">
+
+    <section class="panel panel--map">
+      <div class="panel__header">
+        <h2>Mapa de Obras</h2>
+        <span class="panel__hint" id="map-count">0 pontos</span>
+      </div>
+      <div id="map" class="map"></div>
+    </section>
+
+    <section class="panel panel--donut">
+      <div class="panel__header">
+        <h2>Distribuição por Recurso</h2>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-recurso"></canvas>
+      </div>
+      <ul class="legend" id="legend-recurso"></ul>
+    </section>
+
+    <section class="panel panel--bars">
+      <div class="panel__header">
+        <h2>Obras por Fiscal</h2>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chart-fiscal"></canvas>
+      </div>
+    </section>
+
+    <section class="panel panel--table">
+      <div class="panel__header">
+        <h2>Resumo de Obras</h2>
+        <span class="panel__hint" id="table-count">0 registros</span>
+      </div>
+      <div class="table-wrap">
+        <table id="tabela-obras">
+          <thead>
+            <tr>
+              <th>Obra</th>
+              <th>Fiscal(is)</th>
+              <th>Recurso</th>
+              <th>Valor</th>
+              <th>Previsão de término</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>Fonte: Notion · Atualizado automaticamente via GitHub Actions</span>
+    <span id="footer-updated">Última sincronização: --</span>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
