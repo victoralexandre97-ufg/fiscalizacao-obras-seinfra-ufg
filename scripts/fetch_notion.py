@@ -19,6 +19,7 @@ Uso:
 
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -231,6 +232,98 @@ def extract_fiscais(prop: Optional[Dict[str, Any]], headers: Dict[str, str]) -> 
     return []
 
 
+def parse_single_coord(s: str) -> float:
+    if not s:
+        return 0.0
+    s_upper = s.upper()
+    negative = False
+    if '-' in s:
+        negative = True
+    if 'S' in s_upper or 'W' in s_upper or 'O' in s_upper:
+        negative = True
+    elif 'N' in s_upper or 'E' in s_upper:
+        negative = False
+
+    if '°' in s or "'" in s or '"' in s:
+        nums = re.findall(r'[-+]?\d*\.\d+|\d+', s)
+        if nums:
+            try:
+                vals = [float(n) for n in nums]
+                deg = vals[0] if len(vals) > 0 else 0.0
+                min_val = vals[1] if len(vals) > 1 else 0.0
+                sec_val = vals[2] if len(vals) > 2 else 0.0
+                val = deg + (min_val / 60.0) + (sec_val / 3600.0)
+                return -val if negative else val
+            except Exception:
+                pass
+
+    clean = s.replace("R$", "").replace("°", "").replace("'", "").replace('"', "").strip()
+    clean = re.sub(r'[A-Za-z]', '', clean).strip()
+    
+    if "," in clean and "." in clean:
+        if clean.rfind(",") > clean.rfind("."):
+            clean = clean.replace(".", "").replace(",", ".")
+        else:
+            clean = clean.replace(",", "")
+    elif "," in clean:
+        clean = clean.replace(",", ".")
+
+    match = re.search(r'[-+]?\d*\.\d+|\d+', clean)
+    if match:
+        try:
+            val = float(match.group(0))
+            if negative and val > 0:
+                val = -val
+            return val
+        except ValueError:
+            pass
+            
+    return 0.0
+
+
+def extract_coordinate(prop: Optional[Dict[str, Any]], is_longitude: bool = False) -> float:
+    if not prop:
+        return 0.0
+    
+    value = prop.get("number")
+    if value is not None:
+        return float(value)
+        
+    prop_type = prop.get("type")
+    raw = ""
+    if prop_type == "rich_text":
+        raw = extract_rich_text(prop)
+    elif prop_type == "title":
+        raw = extract_title(prop)
+    elif prop_type == "number":
+        val = prop.get("number")
+        if val is not None:
+            return float(val)
+            
+    if not raw:
+        return 0.0
+        
+    raw_str = raw.strip()
+    
+    if ";" in raw_str:
+        parts = [p.strip() for p in raw_str.split(";") if p.strip()]
+    elif "," in raw_str and (" " in raw_str or raw_str.count("-") >= 2 or raw_str.count(".") >= 2):
+        parts = [p.strip() for p in raw_str.split(",") if p.strip()]
+    else:
+        parts = [raw_str]
+
+    if len(parts) == 2:
+        try:
+            lat_candidate = parse_single_coord(parts[0])
+            lon_candidate = parse_single_coord(parts[1])
+            if lat_candidate != 0.0 or lon_candidate != 0.0:
+                return lon_candidate if is_longitude else lat_candidate
+        except Exception:
+            pass
+
+    return parse_single_coord(raw_str)
+
+
 def extract_number(prop: Optional[Dict[str, Any]]) -> float:
     if not prop:
         return 0.0
@@ -284,8 +377,8 @@ def normalize_page(page: Dict[str, Any], headers: Dict[str, str]) -> Dict[str, A
         "recurso": extract_select(recurso_prop),
         "status": extract_status(status_prop),
         "valor_total": extract_number(valor_prop),
-        "latitude": extract_number(lat_prop),
-        "longitude": extract_number(lon_prop),
+        "latitude": extract_coordinate(lat_prop, is_longitude=False),
+        "longitude": extract_coordinate(lon_prop, is_longitude=True),
         "data_inicio": extract_date(inicio_prop, "start"),
         "previsao_termino": extract_date(termino_prop, "start"),
     }
